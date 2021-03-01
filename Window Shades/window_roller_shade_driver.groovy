@@ -15,7 +15,7 @@ import groovy.json.JsonOutput
 import hubitat.zigbee.zcl.DataType
 
 metadata {
-	definition(name: "ORVIBO/Yooksmart/Yoolax Zigbee Window Shades", namespace: "caiss)n", author: "AvianWaves, Alam", ocfDeviceType: "oic.d.blind", mnmn: "SmartThings", vid: "generic-shade-3") {
+	definition(name: "ORVIBO/Yooksmart/Yoolax Zigbee Window Shades", namespace: "caiss0n", author: "AvianWaves, Alam", ocfDeviceType: "oic.d.blind", mnmn: "SmartThings", vid: "generic-shade-3") {
 		capability "Actuator"
 		capability "Battery"
 		capability "Configuration"
@@ -213,8 +213,9 @@ def pause() {
 	zigbee.command(CLUSTER_WINDOW_COVERING, COMMAND_PAUSE)
 }
 
-def presetPosition() {
-		setLevel(preset ?: 50)
+def setPosition(data) {
+        data = data.toInteger()
+		setLevel(data)
 }
 
 /**
